@@ -31,7 +31,7 @@ Após instalar as ferramentas acima, execute os seguintes passos:
 4. Execute o comando `python manage.py migrate` para criar as tabelas do banco de dados
 5. Execute o comando `python manage.py runserver` para subir a API
     - Caso queira usar o Gunicorn: `gunicorn core.wsgi --bind 0.0.0.0:8000`
-6. Abra um navegador e acesse `http://localhost:8000` para acessar a API
+6. Abra um navegador e acesse `http://0.0.0.0:8000/batches/` para acessar a API
 
 
 ## Rodando localmente com o uso do Docker (via Docker Compose)
@@ -44,7 +44,7 @@ Após instalar as ferramentas acima, execute os seguintes passos:
 
 3. Após subir o container, execute o comando `docker compose exec web python manage.py migrate` para criar as tabelas do banco de dados.
 
-4. Abra um navegador e acesse `http://localhost:8000` para acessar a API.
+4. Abra um navegador e acesse `http://0.0.0.0:8000/batches/` para acessar a API.
 
 ### ✏️ Caso esteja familiarizado com o uso da ferramenta Make, o arquivo Makefile possui comandos que poderão ser úteis a você.
 
