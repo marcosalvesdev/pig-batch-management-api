@@ -6,6 +6,6 @@ COPY requirements.txt .
 
 RUN pip install --upgrade pip && pip3 install --no-cache-dir -r requirements.txt
 
-COPY batches_app core .env ./
+COPY batches_app core ./
 
 CMD ["gunicorn", "core.wsgi", "-b", "0.0.0.0:8000"]

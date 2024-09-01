@@ -56,6 +56,7 @@ services:
       start_period: 30s
 
   worker:
+    restart: always
     image: web:dev
     container_name: worker
     command: celery -A core worker -l info --pool=gevent --concurrency=10
