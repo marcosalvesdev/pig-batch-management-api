@@ -1,0 +1,71 @@
+services:
+  web:
+    restart: always
+    image: web:dev
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    container_name: web
+    volumes:
+      - .:/src/app
+    ports:
+      - "8000:8000"
+    expose:
+      - "8000"
+    depends_on:
+      redis:
+        condition: service_healthy
+      db:
+        condition: service_healthy
+    
+  db:
+    restart: always
+    image: postgres
+    container_name: db
+    environment:
+      POSTGRES_DB: pig_batches_db
+      POSTGRES_USER: tester
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tester -d pig_batches_db"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+
+  redis:
+    restart: always
+    image: redis
+    container_name: redis
+    ports:
+      - "6379:6379"
+    expose:
+      - "6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+
+  worker:
+    image: web:dev
+    container_name: worker
+    command: celery -A core worker -l info --pool=gevent --concurrency=10
+    volumes:
+      - .:/src/app
+    depends_on:
+      - web
+      - db
+      - redis   
+
+volumes:
+  db-data:
+  redis-data:
