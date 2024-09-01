@@ -16,7 +16,7 @@ Para rodar este projeto localmente você precisará ter instalado em sua máquin
 
 Após instalar as ferramentas acima, execute os seguintes passos:
 
-1. Faça o clone o repositório [pig-batch-management-api](https://github.com/marcosalvesdev/pig-batch-management-api) 🐖
+1. Faça o clone do repositório [pig-batch-management-api](https://github.com/marcosalvesdev/pig-batch-management-api) 🐖
 2. Instale as dependências: `pip install -r requirements.txt`
     ### Atenção ⚠️
     ### É altamente recomendado que você esteja em um ambiente isolado na sua máquina antes de executar o comando acima, se não souber como criar um aqui está um [tutorial](https://dev.to/franciscojdsjr/guia-completo-para-usar-o-virtual-environment-venv-no-python-57bo) de como fazer.
@@ -38,7 +38,7 @@ Após instalar as ferramentas acima, execute os seguintes passos:
 
 ### ⚠️ Para executar este projeto com Docker você precisará instalar em sua máquina o [Docker](https://www.docker.com/) e o [Docker Compose](https://docs.docker.com/compose/install/).
 
-1. Faça o clone o repositório [pig-batch-management-api](https://github.com/marcosalvesdev/pig-batch-management-api) 🐖
+1. Faça o clone do repositório [pig-batch-management-api](https://github.com/marcosalvesdev/pig-batch-management-api) 🐖
 
 2. Para rodar este projeto com o uso do Docker Compose, execute o comando `docker compose up` ou `docker compose up -d` para rodar em background.
 
